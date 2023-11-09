@@ -1,0 +1,17 @@
+{% extends "structure.html" %}
+
+{% block content %}
+    <!-- Contenu de la page d'accueil -->
+    <h1 class="title">Liste des marques</h1>
+    <a href="{% url 'CarMark:carmark_add' %}">Ajouter une marque</a>
+    <ul class="car-list">
+        {% for carmark in carmarks %}
+            <li class="car-item">
+                <a href="{% url 'CarMark:carmark_list' %}">
+                </a>
+                <a href="{% url 'CarMark:carmark_detail' carmark.id %}"> <img src="{{ carmark.logo.url }}" alt="" class="car-logo"></a>
+                
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

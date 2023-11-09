@@ -1,0 +1,20 @@
+{% extends "structure.html" %}
+{% load static %}
+{% block title %}Les modèles{% endblock %}
+{% block content %}
+    <div class="banner-images">
+        <img src="{% static 'images/banner1.png' %}" alt="" class="banner-image">
+    </div>
+    <h1 class="title">Liste des modèles de voiture</h1>
+    <a href="{% url 'CarModel:carmodel_add' %}" class="btn btn-primary">Ajouter un modèle</a>
+    <ul class="car-list">
+        {% for carmodel in carmodels %}
+            <li class="car-item">
+                <a href="{% url 'CarModel:carmodel_detail' carmodel.pk %}">
+                    <div class="car-name">{{ carmodel.name }}</div>
+                </a>
+                <img src="{{ carmodel.logo.url }}" alt="" class="car-logo">
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

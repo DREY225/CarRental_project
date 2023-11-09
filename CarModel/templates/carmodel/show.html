@@ -1,0 +1,16 @@
+{% extends "structure.html" %}
+
+{% block content %}
+    <!-- Contenu de la page d'accueil -->
+    <h1>Détail du modèle de voiture</h1>
+    <h3>Nom du modèle : {{ carmodel.name }} </h3>
+    <h3>Marque : {{ carmodel.mark }} </h3>
+    <a href="{% url 'CarModel:carmodel_list' %}">Retour</a>
+    <a href="{% url 'CarModel:carmodel_edit' carmodel.pk %}">Modifier</a>
+    <a href="{% url 'CarModel:carmodel_delete' carmodel.pk %}">Supprimer</a>
+    <h3>Voitures</h3>
+    <ul>
+        {% for car in carmodel.car_set.all %}
+            <li>{{ car.registration_number }}</li>
+        {% endfor %}
+{% endblock %}

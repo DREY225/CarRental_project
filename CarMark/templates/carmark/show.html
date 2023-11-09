@@ -1,0 +1,22 @@
+{% extends "structure.html" %}
+
+{% block content %}
+    <!-- Détail de la marque de voiture -->
+    <h1>{{ carmark.name }}</h1>
+    <h4>Pays d'origine : {{ carmark.country }}</h4>
+    <img src="{{ carmark.logo.url }}" alt="{{ carmark.name }}" class="car-logo">
+    <a href="{% url 'CarMark:carmark_list' %}">Retour</a>
+    <a href="{% url 'CarMark:carmark_edit' carmark.id %}">Modifier</a>
+    <a href="{% url 'CarMark:carmark_delete' carmark.id %}">Supprimer</a>
+    <h3>Les modèles de la marque</h3>
+    <ul>
+        {% for carmodel in carmark.carmodel_set.all %}
+            <li><a href="{% url 'CarModel:carmodel_detail' carmodel.pk %}">{{ carmodel.name }}</a></li>
+        {% endfor %}
+    <h3>Les voitures de la marque</h3>
+    <ul>
+        {% for car in carmark.car_set.all %}
+            <li><a href="{% url 'Car:car_detail' car.pk %}">{{ car.registration_number }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

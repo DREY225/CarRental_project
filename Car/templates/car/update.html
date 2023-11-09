@@ -1,0 +1,10 @@
+{% extends "structure.html" %}
+{% block content %}
+<h1>Modifier la Voiture</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'Car:car_list' %}">Retour</a>
+{% endblock %}

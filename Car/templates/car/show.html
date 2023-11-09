@@ -1,0 +1,13 @@
+{% extends "structure.html" %}
+{% block content %}
+<h1>Détails de la Voiture</h1>
+<h4>Marque : {{ car.mark }}</h4>
+<h4>Modèle : {{ car.model }}</h4>
+<h4>Immatriculation : {{ car.registration_number }}</h4>
+<h4>Année : {{ car.year }}</h4>
+<h4>Prix : {{ car.formatted_price }} FCFA/J</h4>
+<img src="{{ car.image.url }}" alt="{{ car.mark }} - {{ car.model }}">
+<a href="{% url 'Car:car_edit' car.pk %}">Modifier</a>
+<a href="{% url 'Car:car_delete' car.pk %}">Supprimer</a>
+<a href="{% url 'Car:car_list' %}">Retour</a>
+{% endblock %}

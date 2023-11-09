@@ -1,0 +1,26 @@
+{% extends "structure.html" %}
+{% load static %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<div class="banner-images">
+    <img class="banner-left" src="{% static 'images/banner-left.png' %}" alt="Logo du site">
+    <h1 class="banner-center">Bienvenue sur CARENTAL</h1>
+    <img class="banner-right" src="{% static 'images/banner-right.png' %}" alt="Logo du site">
+</div>
+<div class="container">
+    <h2 class="title">Nos 05 véhicules les plus demandés</h2>
+    <div class="car-grid">
+        {% for Car in Cars|slice:":5" %}
+            <div class="car">
+                <img src="{{ Car.image.url }}" alt="{{ Car.mark }} {{ Car.model }}" class="car-image">
+                <div class="car-info">
+                    <h3>{{ Car.mark }} {{ Car.model }}</h3>
+                    <h5>Prix : {{ Car.formatted_price }} FCFA/J</h5>
+                </div>                
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

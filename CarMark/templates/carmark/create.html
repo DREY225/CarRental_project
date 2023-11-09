@@ -1,0 +1,12 @@
+{% extends "structure.html" %}
+
+{% block content %}
+    <!-- Formulaire d'ajout de marque de voiture -->
+    <h1>Ajouter une marque de voiture</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Ajouter">
+    </form>
+    <a href="{% url 'CarMark:carmark_list' %}">Retour</a>
+{% endblock %}

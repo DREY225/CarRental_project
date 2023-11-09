@@ -1,0 +1,21 @@
+{% extends "structure.html" %}
+{% load static %}
+{% block title %}Véhicules{% endblock %}
+{% block content %}
+    <div class="banner-images">
+        <img src="{% static 'images/banner3.png' %}" alt="" class="banner-image">
+    </div>
+    <h1 class="title">Liste des véhicules</h1>
+    <a href="{% url 'Car:car_add' %}" class="btn btn-primary">Ajouter un véhicule</a>
+    {% for car in cars %}
+    <div class="car">
+       <img src="{{ car.image.url }}" alt="" class="car-image">
+       <a href="{% url 'Car:car_detail' car.pk %}" class="btn btn-info">Voir plus</a>
+        <div class="car-info">
+            <h3>{{ car.mark }} {{ car.model }}</h3>
+            <h4>Prix : {{ car.formatted_price }} FCFA/J</p>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
